@@ -1,0 +1,23 @@
+workflows:
+  ios-build:
+    name: Build iOS App
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      vars:
+        BUNDLE_ID: "com.leoklinger.flowin"
+    scripts:
+      - name: Install dependencies
+        script: |
+          flutter pub get
+      - name: Flutter build iOS
+        script: |
+          flutter build ipa --release --no-codesign
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      email:
+        recipients:
+          - seu-email@gmail.com

@@ -16,7 +16,7 @@ workflows:
       - name: Flutter build iOS
         script: |
           cd src
-          flutter build ipa --release --no-codesign
+          flutter build ipa --release --no-codesign --no-tree-shake-icons
     artifacts:
       - src/build/ios/ipa/*.ipa
     publishing:

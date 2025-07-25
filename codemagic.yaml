@@ -7,17 +7,19 @@ workflows:
       xcode: latest
       cocoapods: default
       vars:
-        BUNDLE_ID: "com.leoklinger.flowin"
+        BUNDLE_ID: "com.leoklinger.flowin" # substitua pelo seu bundle ID real
     scripts:
       - name: Install dependencies
         script: |
+          cd src
           flutter pub get
       - name: Flutter build iOS
         script: |
+          cd src
           flutter build ipa --release --no-codesign
     artifacts:
-      - build/ios/ipa/*.ipa
+      - src/build/ios/ipa/*.ipa
     publishing:
       email:
         recipients:
-          - seu-email@gmail.com
+          - leandro.klingeroliveira@gmail.com
